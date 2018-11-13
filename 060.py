@@ -1,25 +1,24 @@
-def backtracking(nums, rest, temp, ans, time, k):
-    if rest == 0:
-        ans.append(temp)
-        return
-        # return temp
-    else:
-        for i, value in enumerate(nums):
-            if value not in temp:
-                backtracking(nums, rest - 1, temp + [value], ans, time, k)
-    return
+class Solution(object):
+    def getPermutation(self, n, k):
+        """
+        :type n: int
+        :type k: int
+        :rtype: str
+        """
+        ans=''
+        nums=[i for i in range(1,n+1)]
+        import math
+        yushu=k
+        for i in range(n-1,-1,-1):
+            fac=math.factorial(i)
+            index=yushu//fac
+            yushu=yushu%fac
+            if yushu==0:
+                index-=1
+            ans += str(nums[index])
+            nums.remove(nums[index])
 
-def getPermutation( n, k):
-    """
-    :type n: int
-    :type k: int
-    :rtype: str
-    """
-    ans = []
-    nums = range(1, n + 1)
-    backtracking(nums, len(nums), [], ans, 0, k)
-    return ans
+        return ans
 
-test=getPermutation(3,3)
-
-
+test=Solution()
+a=test.getPermutation(5,3)

@@ -1,0 +1,1 @@
+def BianrySeaech( nums, target):
